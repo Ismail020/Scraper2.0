@@ -34,6 +34,7 @@ npm install
 
 #### Start Environment
 php artisan serve
+npm run dev
 ```
 
 ##### Database
