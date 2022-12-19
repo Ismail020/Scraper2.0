@@ -1,4 +1,4 @@
-# Laracasts-laravel
+# Scraper2.0
 
 ## Setup
 
