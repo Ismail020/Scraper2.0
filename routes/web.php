@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'front'])->name('front');
+Route::get('/stores', [App\Http\Controllers\HomeController::class, 'stores'])->name('stores');
+Route::get('/stores/{id}', [App\Http\Controllers\HomeController::class, 'all'])->name('all');
+Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'product'])->name('product');
+Route::patch('/product/{product}/patch', [App\Http\Controllers\ProductController::class, 'update'])->name('product.patch');
+Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
 
 Auth::routes();
 
@@ -26,7 +31,13 @@ Route::get('/category/{id}', [App\Http\Controllers\HomeController::class, 'show'
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
     Route::get('/add-product', [App\Http\Controllers\ProductController::class, 'create'])->name('add-product');
     Route::post('/add-product', [App\Http\Controllers\ProductController::class, 'store'])->name('store-product');
     Route::post('/add-category', [App\Http\Controllers\CategoryController::class, 'store'])->name('store-category');
+    Route::post('/add-store', [App\Http\Controllers\StoreController::class, 'store'])->name('store-store');
+    Route::get('/add-accessoires', [App\Http\Controllers\AccessoiresController::class, 'create'])->name('add-accessoires');
+    Route::post('/add-accessoires', [App\Http\Controllers\AccessoiresController::class, 'store'])->name('store-accessoires');
 });
+
+// alternate, amazon, mobiel.nl, belsimpel, coolblue

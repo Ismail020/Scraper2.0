@@ -11,13 +11,15 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
 
     <!-- Packages -->
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
 
     <!-- Scripts -->
     @viteReactRefresh
@@ -25,7 +27,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body>
+<body class="h-screen">
     <div id="app">
         {{-- @guest
             @if (Route::has('login'))
@@ -46,18 +48,23 @@
             </form>
         @endguest --}}
 
-        <nav class="navbar navbar-light bg-white shadow-sm">
+        {{-- <nav class="navbar navbar-light bg-white shadow-sm">
             <div>
                 @if (Route::has('login'))
                     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                         @auth
-                            <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                            <a href="{{ url('/add-product') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">add</a>
-                            <a href="{{ url('/update') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Update</a>
-                            <a href="{{ url('/save') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">save</a>
+                            <a href="{{ url('/home') }}"
+                                class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                            <a href="{{ url('/add-product') }}"
+                                class="text-sm text-gray-700 dark:text-gray-500 underline">add</a>
+                            <a href="{{ url('/update') }}"
+                                class="text-sm text-gray-700 dark:text-gray-500 underline">Update</a>
+                            <a href="{{ url('/save') }}"
+                                class="text-sm text-gray-700 dark:text-gray-500 underline">save</a>
                         @else
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-        
+                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log
+                                in</a>
+
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}"
                                     class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
@@ -66,7 +73,7 @@
                     </div>
                 @endif
             </div>
-            
+
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -121,13 +128,19 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
+
+        <x-nav />
 
         <main class="py-4">
-            @yield('content')
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                @yield('content')
+            </div>
         </main>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js" integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"
+        integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>

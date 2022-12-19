@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class StoreController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -28,14 +28,22 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'img' => 'required',
+            'color' => 'required',
         ]);
 
-        $category = new Category([
+        $imgName = time() . '.' . $request->img->extension();
+
+        $request->img->move(public_path('images'), $imgName);
+
+        $store = new Store([
             'name' => $request->get('name'),
+            'img' => $imgName,
+            'color' => $request->get('color'),
         ]);
 
-        $category->save();
-        
-        return redirect(route('front'))->with('success', 'Category has been added');
+        $store->save();
+
+        return redirect(route('add-product'))->with('success', 'Store has been added');
     }
 }
