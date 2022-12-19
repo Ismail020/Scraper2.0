@@ -8,7 +8,7 @@
 
 ```bash
 # Clone the repository to your device.
-git clone https://github.com/Ismail020/laracasts-laravel.git
+git clone https://github.com/Ismail020/Scraper2.0.git
 
 # Copy the .env.example and change the copied file name to .env
 cp .env.example .env
